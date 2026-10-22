@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hiresflow"
+version = "0.1.0"
+description = "A high-resolution segmentation runtime for existing vision models"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.9"
+authors = [
+  {name = "HiResFlow contributors"},
+]
+keywords = [
+  "semantic-segmentation",
+  "onnxruntime",
+  "cuda",
+  "high-resolution-images",
+  "tiled-inference",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: C++",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/wl20a/hiresflow"
+Issues = "https://github.com/wl20a/hiresflow/issues"
+
+[tool.setuptools.packages.find]
+where = ["python"]

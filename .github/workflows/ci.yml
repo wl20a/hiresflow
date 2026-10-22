@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  core:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch image codec headers
+        run: HIRESFLOW_SKIP_ORT=1 bash scripts/fetch_deps.sh
+      - name: Configure without ONNX Runtime
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DHIRESFLOW_ENABLE_ORT=OFF \
+            -DHIRESFLOW_BUILD_TESTS=ON
+      - name: Build
+        run: cmake --build build -j2
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+      - name: Check scripts and Python syntax
+        run: |
+          bash -n scripts/*.sh
+          python3 -m py_compile scripts/*.py python/hiresflow/*.py examples/*.py

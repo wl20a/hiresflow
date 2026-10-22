@@ -1,0 +1,43 @@
+name: Bug report
+description: Report a reproducible runtime or correctness problem
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Minimize private or proprietary data.
+  - type: textarea
+    id: command
+    attributes:
+      label: Command
+      description: Paste the exact command used.
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU and driver
+      placeholder: RTX 5070 Laptop, 580.173.02
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      placeholder: HiResFlow, ONNX Runtime, CUDA, OS
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Report or logs
+      description: Redact private paths, prompts, images, and credentials.
+      render: json

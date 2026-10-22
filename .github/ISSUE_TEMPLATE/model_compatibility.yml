@@ -1,0 +1,32 @@
+name: ONNX model compatibility
+description: Report a model that fails to load or execute
+title: "[Model]: "
+labels: ["model-compatibility"]
+body:
+  - type: input
+    id: model
+    attributes:
+      label: Model name and source
+    validations:
+      required: true
+  - type: input
+    id: shapes
+    attributes:
+      label: Input and output shapes
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Execution provider
+      options:
+        - CUDAExecutionProvider
+        - CPUExecutionProvider
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: failure
+    attributes:
+      label: Failure
+      description: Include the complete error and command.
+    validations:
+      required: true
